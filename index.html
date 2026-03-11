@@ -1,94 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JMC Launcher — Lightweight Minecraft Launcher</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JMC Launcher | Simply Dark</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.5);
+            --bg-dark: #050505;
+            --card-bg: rgba(15, 15, 15, 0.8);
+        }
+
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: var(--bg-dark); 
+            color: #ffffff;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        .bg-glow {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at 50% 30%, #1d4ed822 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .glass {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-fill-color: transparent;
+            color: transparent;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            box-shadow: 0 0 20px var(--accent-glow);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 35px var(--accent-glow);
+            filter: brightness(1.1);
+        }
+
+        .feature-card {
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .status-badge {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+        }
+    </style>
 </head>
-<body class="bg-zinc-950 text-white">
+<body class="selection:bg-blue-500/30">
 
-  <!-- Navbar -->
-  <nav class="flex items-center justify-between p-5 border-b border-zinc-800">
-    <h1 class="text-xl font-bold">JMC Launcher</h1>
-    <div class="space-x-4">
-      <a href="#features" class="hover:text-zinc-300">Features</a>
-      <a href="#download" class="hover:text-zinc-300">Download</a>
-      <a href="https://github.com/simplydarkpy/JMC-luancher" target="_blank" class="hover:text-zinc-300">GitHub</a>
-    </div>
-  </nav>
+    <div class="bg-glow"></div>
 
-  <!-- Hero -->
-  <section class="flex flex-col items-center text-center py-20 px-6">
-    <h2 class="text-5xl font-extrabold mb-4">Launch Minecraft Fast. No Bloat.</h2>
-    <p class="text-zinc-400 max-w-xl mb-8">
-      JMC Launcher is a modern, lightweight Minecraft launcher with Fabric support,
-      offline play, and full mod management — all in one clean EXE.
-    </p>
-    <a href="#download"
-       class="bg-white text-black px-6 py-3 rounded-xl font-semibold hover:bg-zinc-200 transition">
-      Get JMC Launcher
-    </a>
-  </section>
+    <!-- Nav -->
+    <nav class="fixed top-0 w-full z-50 glass border-b border-white/5 py-4 px-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3 font-extrabold text-xl">
+                <div class="p-1.5 bg-blue-600 rounded-lg">
+                    <i data-lucide="rocket" class="w-5 h-5 text-white"></i>
+                </div>
+                <span>JMC <span class="text-blue-500 uppercase tracking-tighter">Launcher</span></span>
+            </div>
+            <div class="hidden md:flex gap-8 text-sm font-medium text-gray-400">
+                <a href="#features" class="hover:text-white transition">Features</a>
+                <a href="#setup" class="hover:text-white transition">Quick Start</a>
+                <a href="#notes" class="hover:text-white transition">Notes</a>
+            </div>
+            <a href="https://github.com/simplydarkpy/JMC-luancher/releases" class="btn-primary px-6 py-2 rounded-full text-sm font-bold">
+                Get EXE
+            </a>
+        </div>
+    </nav>
 
-  <!-- Features -->
-  <section id="features" class="py-20 px-6 bg-zinc-900">
-    <h3 class="text-3xl font-bold text-center mb-10">Features</h3>
+    <!-- Hero -->
+    <section class="pt-40 pb-20 px-6">
+        <div class="max-w-5xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 status-badge px-4 py-1.5 rounded-full text-xs font-bold mb-8 tracking-widest uppercase">
+                🚀 Simply Dark • YOUSSOF
+            </div>
+            <h1 class="text-6xl md:text-8xl font-extrabold mb-8 tracking-tighter leading-tight">
+                Play Minecraft. <br><span class="gradient-text">Simply Dark.</span>
+            </h1>
+            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
+                A modern, lightweight Minecraft launcher with Fabric support and full mod management. Run the EXE directly on Windows—no Python needed.
+            </p>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="https://github.com/simplydarkpy/JMC-luancher/releases" class="btn-primary px-10 py-5 rounded-2xl text-lg font-bold flex items-center gap-3">
+                    <i data-lucide="download"></i> Download JMC Launcher.exe
+                </a>
+                <a href="https://github.com/simplydarkpy/JMC-luancher" class="glass px-10 py-5 rounded-2xl text-lg font-bold flex items-center gap-3 hover:bg-white/5 transition">
+                    <i data-lucide="github"></i> Repository
+                </a>
+            </div>
+        </div>
+    </section>
 
-    <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+    <!-- Features -->
+    <section id="features" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="feature-card glass p-8 rounded-3xl border-blue-500/20" style="opacity: 1; transform: translateY(0);">
+                <i data-lucide="user-check" class="text-blue-500 mb-6"></i>
+                <h3 class="text-lg font-bold mb-2">Offline Support</h3>
+                <p class="text-gray-400 text-sm">Launch Minecraft with offline username support instantly.</p>
+            </div>
+            <div class="feature-card glass p-8 rounded-3xl" style="opacity: 1; transform: translateY(0);">
+                <i data-lucide="package-plus" class="text-blue-500 mb-6"></i>
+                <h3 class="text-lg font-bold mb-2">Fabric Support</h3>
+                <p class="text-gray-400 text-sm">Install and update Fabric automatically through the launcher.</p>
+            </div>
+            <div class="feature-card glass p-8 rounded-3xl" style="opacity: 1; transform: translateY(0);">
+                <i data-lucide="mouse-pointer-2" class="text-blue-500 mb-6"></i>
+                <h3 class="text-lg font-bold mb-2">Mod Management</h3>
+                <p class="text-gray-400 text-sm">Drag & drop .jar mods, delete, refresh, or open folders easily.</p>
+            </div>
+            <div class="feature-card glass p-8 rounded-3xl" style="opacity: 1; transform: translateY(0);">
+                <i data-lucide="settings-2" class="text-blue-500 mb-6"></i>
+                <h3 class="text-lg font-bold mb-2">Custom Java</h3>
+                <p class="text-gray-400 text-sm">Auto-detect paths, set JVM arguments, and allocate 1–16 GB RAM.</p>
+            </div>
+        </div>
+    </section>
 
-      <div class="bg-zinc-950 p-6 rounded-2xl border border-zinc-800">
-        <h4 class="text-xl font-semibold mb-2">Offline Launch</h4>
-        <p class="text-zinc-400">Start Minecraft with offline username support instantly.</p>
-      </div>
+    <!-- Quick Start -->
+    <section id="setup" class="py-24 px-6 bg-zinc-950/30">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-extrabold mb-12 text-center">Quick Start</h2>
+            <div class="grid gap-4">
+                <div class="glass p-6 rounded-2xl flex items-start gap-6">
+                    <div class="w-10 h-10 rounded-full bg-blue-600 flex-shrink-0 flex items-center justify-center font-bold">1</div>
+                    <div>
+                        <p class="text-white font-bold">Download</p>
+                        <p class="text-gray-400 text-sm">Download <code class="text-blue-400">JMC Launcher.exe</code> from the releases page.</p>
+                    </div>
+                </div>
+                <div class="glass p-6 rounded-2xl flex items-start gap-6">
+                    <div class="w-10 h-10 rounded-full bg-blue-600 flex-shrink-0 flex items-center justify-center font-bold">2</div>
+                    <div>
+                        <p class="text-white font-bold">Place & Run</p>
+                        <p class="text-gray-400 text-sm">Place it anywhere; the launcher will auto-create logs and config files in the same folder.</p>
+                    </div>
+                </div>
+                <div class="glass p-6 rounded-2xl flex items-start gap-6">
+                    <div class="w-10 h-10 rounded-full bg-blue-600 flex-shrink-0 flex items-center justify-center font-bold">3</div>
+                    <div>
+                        <p class="text-white font-bold">Configure</p>
+                        <p class="text-gray-400 text-sm">Enter your username in the Launcher tab. Tweak RAM and Java settings in the Settings tab if needed.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      <div class="bg-zinc-950 p-6 rounded-2xl border border-zinc-800">
-        <h4 class="text-xl font-semibold mb-2">Fabric Installer</h4>
-        <p class="text-zinc-400">Install or update Fabric automatically with one click.</p>
-      </div>
+    <!-- Notes Section -->
+    <section id="notes" class="py-24 px-6 max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-8 italic">Important Notes</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="p-6 border border-white/5 rounded-2xl bg-white/5">
+                <ul class="space-y-4 text-sm text-gray-300">
+                    <li class="flex items-center gap-3"><i data-lucide="monitor" class="w-4 h-4 text-blue-500"></i> Windows Only</li>
+                    <li class="flex items-center gap-3"><i data-lucide="hard-drive" class="w-4 h-4 text-blue-500"></i> Local storage for logs and config</li>
+                    <li class="flex items-center gap-3"><i data-lucide="wifi-off" class="w-4 h-4 text-blue-500"></i> Works offline for launching</li>
+                </ul>
+            </div>
+            <div class="p-6 border border-white/5 rounded-2xl bg-white/5">
+                <ul class="space-y-4 text-sm text-gray-300">
+                    <li class="flex items-center gap-3"><i data-lucide="wifi" class="w-4 h-4 text-blue-500"></i> Internet required for Fabric updates</li>
+                    <li class="flex items-center gap-3"><i data-lucide="moon" class="w-4 h-4 text-blue-500"></i> Follows Windows Light/Dark theme</li>
+                    <li class="flex items-center gap-3"><i data-lucide="file-text" class="w-4 h-4 text-blue-500"></i> Daily logs saved in logs/ folder</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-      <div class="bg-zinc-950 p-6 rounded-2xl border border-zinc-800">
-        <h4 class="text-xl font-semibold mb-2">Mods Management</h4>
-        <p class="text-zinc-400">Drag & drop .jar mods, delete, refresh, and open mods folder easily.</p>
-      </div>
+    <!-- Footer -->
+    <footer class="py-20 px-6 border-t border-white/5 text-center">
+        <div class="mb-6 flex justify-center items-center gap-3 font-bold text-lg">
+            <div class="w-6 h-1 bg-blue-600 rounded-full"></div>
+            JMC Launcher
+            <div class="w-6 h-1 bg-blue-600 rounded-full"></div>
+        </div>
+        <p class="text-gray-500 text-sm mb-8 italic uppercase tracking-widest">Author: YOUSSOF</p>
+        <div class="flex justify-center gap-6">
+            <a href="https://github.com/simplydarkpy/JMC-luancher" class="text-gray-400 hover:text-white transition"><i data-lucide="github"></i></a>
+        </div>
+    </footer>
 
-      <div class="bg-zinc-950 p-6 rounded-2xl border border-zinc-800">
-        <h4 class="text-xl font-semibold mb-2">Custom Java</h4>
-        <p class="text-zinc-400">Auto-detect Java or set your own path with custom JVM arguments.</p>
-      </div>
+    <script>
+        lucide.createIcons();
 
-      <div class="bg-zinc-950 p-6 rounded-2xl border border-zinc-800">
-        <h4 class="text-xl font-semibold mb-2">RAM Control</h4>
-        <p class="text-zinc-400">Allocate between 1–16 GB RAM easily.</p>
-      </div>
+        // Reveal animations
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, observerOptions);
 
-      <div class="bg-zinc-950 p-6 rounded-2xl border border-zinc-800">
-        <h4 class="text-xl font-semibold mb-2">Lightweight EXE</h4>
-        <p class="text-zinc-400">No Python needed — just run the launcher.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Download -->
-  <section id="download" class="py-20 px-6 text-center">
-    <h3 class="text-3xl font-bold mb-4">Download JMC Launcher</h3>
-    <p class="text-zinc-400 mb-8">
-      Get the latest release directly from GitHub.
-    </p>
-
-    <a href="https://github.com/simplydarkpy/JMC-luancher/releases"
-       target="_blank"
-       class="bg-white text-black px-8 py-3 rounded-xl font-semibold hover:bg-zinc-200 transition">
-      Download for Windows
-    </a>
-  </section>
-
-  <!-- Footer -->
-  <footer class="border-t border-zinc-800 py-6 text-center text-zinc-500">
-    <p>© 2026 JMC Launcher — Made by YOUSSOF</p>
-    <p class="text-sm">Not affiliated with Mojang or Microsoft.</p>
-  </footer>
-
+        document.querySelectorAll('.feature-card').forEach(card => observer.observe(card));
+    </script>
 </body>
 </html>
